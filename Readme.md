@@ -1,7 +1,8 @@
 ---
 转载请说明出处！
-作者：[kqw攻城狮](http://kongqw.github.io/about/index.html)
-出处：[个人站](http://kongqw.com/2016/09/01/2016-09-01-Android%E8%87%AA%E5%AE%9A%E4%B9%89%E6%91%87%E6%9D%86/) | [CSDN](http://blog.csdn.net/q4878802/article/details/52402529)
+
+该项目Fork自：[kqw攻城狮](https://github.com/kongqw/AndroidRocker)，在原有功能基础上增加了摇杆移动幅度监听接口
+
 
 ---
 
@@ -9,28 +10,7 @@
 
 # 部署
 
-To get a Git project into your build:
-
-Step 1. Add the JitPack repository to your build file
-
-Add it in your root build.gradle at the end of repositories:
-
-``` gradle
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
-```
-
-Step 2. Add the dependency
-
-``` gradle
-dependencies {
-        compile 'com.github.kongqw:AndroidRocker:1.0.1'
-}
-```
+下载源代码编译后引用
 
 # 使用
 
@@ -166,6 +146,12 @@ setCallBackMode(CallBackMode mode)
 | CALL_BACK_MODE_STATE_CHANGE | 状态有变化的时候回调 |
 
 
+
+# 监听摇动幅度（宽高的百分比）
+
+``` java
+setOnVectorListener(OnVectorListener listener)
+```
 
 # 监听摇动角度
 
