@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KqwRockerDemo.iml" filepath="$PROJECT_DIR$/KqwRockerDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/KqwRockerDemo.iml" filepath="$PROJECT_DIR$/KqwRockerDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/KqwRockerLibrary/KqwRockerLibrary.iml" filepath="$PROJECT_DIR$/KqwRockerLibrary/KqwRockerLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/KqwRockerLibrary/KqwRockerLibrary.iml" filepath="$PROJECT_DIR$/KqwRockerLibrary/KqwRockerLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidRocker.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidRocker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KqwRockerLibrary/AndroidRocker.KqwRockerLibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/KqwRockerLibrary/AndroidRocker.KqwRockerLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AndroidRocker.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AndroidRocker.app.iml" />
     </modules>
   </component>
 </project>
