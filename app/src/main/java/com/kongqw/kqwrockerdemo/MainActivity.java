@@ -1,4 +1,5 @@
 package com.kongqw.kqwrockerdemo;
+
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -55,6 +56,22 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onFinish() {
                     mLogRight.setText(null);
+                }
+            });
+            rockerViewRight.setOnVectorListener(new RockerView.OnVectorChangeListener() {
+                @Override
+                public void onStart() {
+
+                }
+
+                @Override
+                public void vector(double horizontal, double vertical) {
+                    mLogLeft.setText("摇动量 : " + horizontal + " " + vertical);
+                }
+
+                @Override
+                public void onFinish() {
+                    mLogLeft.setText("摇动量 : " + 0 + " " + 0);
                 }
             });
         }

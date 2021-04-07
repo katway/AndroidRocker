@@ -42,6 +42,7 @@ public class RockerView extends View {
     private CallBackMode mCallBackMode = CallBackMode.CALL_BACK_MODE_MOVE;
     private OnAngleChangeListener mOnAngleChangeListener;
     private OnShakeListener mOnShakeListener;
+    private OnVectorChangeListener mOnVectorListener;
 
     private DirectionMode mDirectionMode;
     private Direction tempDirection = Direction.DIRECTION_CENTER;
@@ -309,8 +310,11 @@ public class RockerView extends View {
         // 计算角度
         double angle = radian2Angle(radian);
 
+
+
+
         // 回调 返回参数
-        callBack(angle);
+        callBack(angle, lenX/getMeasuredWidth()*2, lenY/getMeasuredHeight()*2*-1);
 
         Logger.i(TAG, "getRockerPositionPoint: 角度 :" + angle);
         if (lenXY + rockerRadius <= regionRadius) { // 触摸位置在可活动范围内
@@ -372,12 +376,32 @@ public class RockerView extends View {
      */
     private void callBackStart() {
         tempDirection = Direction.DIRECTION_CENTER;
+        if (null != mOnVectorListener) {
+            mOnVectorListener.onStart();
+        }
+
         if (null != mOnAngleChangeListener) {
             mOnAngleChangeListener.onStart();
         }
         if (null != mOnShakeListener) {
             mOnShakeListener.onStart();
         }
+    }
+
+    /**
+     * 回调
+     * 返回参数
+     *
+     * @param angle   摇动角度
+     * @param vectorX 水平摇动量
+     * @param vectorY 垂直摇动量
+     */
+    private void callBack(double angle, double vectorX, double vectorY) {
+        if (null != mOnVectorListener) {
+            mOnVectorListener.vector(vectorX, vectorY);
+        }
+
+        callBack(angle);
     }
 
     /**
@@ -581,12 +605,16 @@ public class RockerView extends View {
      */
     private void callBackFinish() {
         tempDirection = Direction.DIRECTION_CENTER;
+        if (null != mOnVectorListener) {
+            mOnVectorListener.onFinish();
+        }
         if (null != mOnAngleChangeListener) {
             mOnAngleChangeListener.onFinish();
         }
         if (null != mOnShakeListener) {
             mOnShakeListener.onFinish();
         }
+
     }
 
     /**
@@ -655,6 +683,15 @@ public class RockerView extends View {
     }
 
     /**
+     * 添加摇动的监听
+     *
+     * @param listener 回调
+     */
+    public void setOnVectorListener(OnVectorChangeListener listener) {
+        mOnVectorListener = listener;
+    }
+
+    /**
      * 摇动方向监听接口
      */
     public interface OnShakeListener {
@@ -685,6 +722,25 @@ public class RockerView extends View {
          * @param angle 角度[0,360)
          */
         void angle(double angle);
+
+        // 结束
+        void onFinish();
+    }
+
+    /**
+     * 摇动幅度的监听接口
+     */
+    public interface OnVectorChangeListener {
+        // 开始
+        void onStart();
+
+        /**
+         * 摇杆角度变化
+         *
+         * @param horizontal 推杆水平移动幅度(%)
+         * @param vertical   推杆纵向移动幅度(%)
+         */
+        void vector(double horizontal, double vertical);
 
         // 结束
         void onFinish();
